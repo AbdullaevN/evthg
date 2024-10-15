@@ -115,7 +115,62 @@
 // console.log(url('google'));
 
 
-function logPerson() {
-    console.log(`Person: ${this.name}, ${this.age}`);
+// function logPerson() {
+//     console.log(`Person: ${this.name}, ${this.age}`);
     
-}
+// }
+
+
+//PROMISE
+
+console.log('req data...');
+
+// setTimeout(() => {
+//     console.log('preparing data...');
+
+
+//     const back = {
+//         server: 'aws',
+//         port:2000,
+//         stasus:'work'
+//     }
+
+
+
+//     setTimeout(() => {
+//         back.modified = true
+//         console.log('Data received', back);
+        
+//     }, 2000)
+     
+    
+// }, 2000);
+
+const prom = new Promise (function (res,rej) {
+    setTimeout(() => {
+            console.log('preparing data...');
+
+            const back = {
+                        server: 'aws',
+                        port:2000,
+                        stasus:'work'
+                    }
+
+                    res(back)
+    }, 2000)
+
+})
+
+
+prom.then((data) => {
+   const p2 = new Promise((res,rej) => {
+        back.modified = true
+        res(data)
+   }, 2000)
+
+
+   p2.then((clientData) =>{
+        console.log('promise resolved',clientData);
+   })
+    
+})
